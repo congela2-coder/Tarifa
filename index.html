@@ -156,4 +156,24 @@ search();
 </script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3ff3a5cfb29c4eeeb722b6a42061a8da"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- GoatCounter -->
+<script data-goatcounter="https://tarifa-elpozo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+/* Registra en GoatCounter lo que buscan los clientes: se envía cuando dejan de escribir 2 s, al pulsar Enter o al salir del cuadro. Sin datos personales. */
+(function(){
+  var q=document.getElementById('q'); if(!q) return;
+  var sent={}, t;
+  function send(){
+    var term=(q.value||'').trim().toLowerCase().replace(/\s+/g,' ');
+    if(term.length<2||sent[term]) return;
+    if(!window.goatcounter||!window.goatcounter.count) return;
+    sent[term]=1;
+    window.goatcounter.count({path:'busqueda: '+term.slice(0,60), title:'Búsqueda', event:true});
+  }
+  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(send,2000)});
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'){clearTimeout(t);send()}});
+  q.addEventListener('blur',function(){clearTimeout(t);send()});
+})();
+</script>
+<!-- End GoatCounter -->
 </body></html>
